@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { IAP } from "@apps-in-toss/web-framework";
 import TermsView   from "./TermsView";
 import PrivacyView from "./PrivacyView";
-import RefundView  from "./RefundView";
 import AdInfoView  from "./AdInfoView";
 
 // ✅ 구독 상품 SKU
@@ -23,7 +22,6 @@ interface SettingsViewProps {
 export default function SettingsView({ userId, onClose }: SettingsViewProps) {
   const [showTerms,   setShowTerms]   = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
-  const [showRefund,  setShowRefund]  = useState(false);
   const [showAdInfo,  setShowAdInfo]  = useState(false);
 
   const [isPremium,  setIsPremium]  = useState(false);
@@ -114,10 +112,9 @@ export default function SettingsView({ userId, onClose }: SettingsViewProps) {
   };
 
   const policyItems = [
-    { label: "서비스 이용약관",         onPress: () => setShowTerms(true) },
-    { label: "개인정보처리방침",         onPress: () => setShowPrivacy(true) },
-    { label: "결제·환불 및 청약철회 정책", onPress: () => setShowRefund(true) },
-    { label: "광고 안내",               onPress: () => setShowAdInfo(true) },
+    { label: "서비스 이용약관",  onPress: () => setShowTerms(true) },
+    { label: "개인정보처리방침",  onPress: () => setShowPrivacy(true) },
+    { label: "광고 안내",        onPress: () => setShowAdInfo(true) },
   ];
 
   return (
@@ -125,7 +122,6 @@ export default function SettingsView({ userId, onClose }: SettingsViewProps) {
 
       {showTerms   && <TermsView   onClose={() => setShowTerms(false)} />}
       {showPrivacy && <PrivacyView onClose={() => setShowPrivacy(false)} />}
-      {showRefund  && <RefundView  onClose={() => setShowRefund(false)} />}
       {showAdInfo  && <AdInfoView  onClose={() => setShowAdInfo(false)} />}
 
       {/* ── 헤더 ── */}
