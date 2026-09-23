@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { IAP } from "@apps-in-toss/web-framework";  // ✅ 추가
 import { getDeviceId } from "@apps-in-toss/web-framework";
 
+
 // ── 컴포넌트 임포트 ────────────────────────────────────────────
+import LockScreen from "./insta-app-components/components/LockScreen";
 import GuideView    from "./insta-app-components/components/GuideView";
 import HomeTab      from "./insta-app-components/components/HomeTab";
 import ReportTab    from "./insta-app-components/components/ReportTab";
@@ -91,6 +93,7 @@ export default function App() {
   const [activeTab,    setActiveTab]    = useState<string>("home");
   const [showGuide,    setShowGuide]    = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showLock,     setShowLock]     = useState(false); // ✅ 추가
   const [result,       setResult]       = useState<AnalysisResult | null>(null);
   const [history,      setHistory]      = useState<HistoryEntry[]>([]);
   const [userId,       setUserId]       = useState<string>("");
@@ -140,8 +143,12 @@ useEffect(() => {
   const handleResultReady = (res: AnalysisResult, entry: HistoryEntry) => {
     setResult(res);
     setHistory(prev => [entry, ...prev.slice(0, 9)]);
+    setShowLock(true); // ✅ 결과 나오면 LockScreen 표시
   };
-  const handleReset = () => setResult(null);
+  const handleReset = () => {
+    setResult(null);
+    setShowLock(false);
+  };
 
   return (
     <div style={S.shell}>
@@ -165,6 +172,26 @@ useEffect(() => {
             onClose={() => {
               logUserAction(userId, "settings_close");
               setShowSettings(false);
+            }}
+          />
+        )}
+
+        {/* ✅ LockScreen 오버레이 */}
+        {showLock && result && (
+          <LockScreen
+            result={result}
+            userId={userId}
+            onWatchAd={() => {
+              logUserAction(userId, "ad_watched");
+              setShowLock(false);
+            }}
+            onSubscribe={() => {
+              logUserAction(userId, "subscribe_success");
+              setShowLock(false);
+            }}
+            onDismiss={() => {
+              logUserAction(userId, "lock_dismissed");
+              setShowLock(false);
             }}
           />
         )}
