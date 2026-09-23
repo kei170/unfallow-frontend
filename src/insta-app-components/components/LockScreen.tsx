@@ -156,6 +156,7 @@ export default function LockScreen({
              !adLoaded ? "⏳ 광고 준비 중..." :
              "🎬 광고 보고 결과 보기"}
           </button>
+          {/* ✅ 구독 버튼 숨김 (SDK 버그 - 코드 유지)
           <button
             style={{ ...s.bgSubBtn, opacity: subLoading ? 0.6 : 1 }}
             onClick={handleSubscribe}
@@ -163,6 +164,7 @@ export default function LockScreen({
           >
             {subLoading ? "결제 처리 중..." : "광고 없이 바로 보기 · 1,100원/월"}
           </button>
+          */}
         </div>
       </div>
 
@@ -197,6 +199,7 @@ export default function LockScreen({
            !adLoaded ? "⏳ 광고 준비 중..." :
            "🎬 광고 보고 결과 보기"}
         </button>
+        {/* ✅ 구독 버튼 숨김 (SDK 버그 - 코드 유지)
         <button
           style={{ ...s.subBtn, opacity: subLoading ? 0.6 : 1 }}
           onClick={handleSubscribe}
@@ -204,6 +207,7 @@ export default function LockScreen({
         >
           {subLoading ? "결제 처리 중..." : "광고 없이 바로 보기 · 1,100원/월"}
         </button>
+        */}
         <button style={s.dismissBtn} onClick={onDismiss}>
           나중에 볼게요
         </button>

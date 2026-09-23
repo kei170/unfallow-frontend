@@ -141,7 +141,7 @@ export default function SettingsView({ userId, onClose }: SettingsViewProps) {
       {/* ── 본문 ── */}
       <div style={s.body}>
 
-        {/* ✅ 구독 카드 */}
+        {/* ✅ 구독 카드 숨김 (SDK 버그 - 코드 유지)
         {isPremium ? (
           <div style={s.activeCard}>
             <div style={s.activeBadge}>✓ PRO 이용 중</div>
@@ -173,9 +173,9 @@ export default function SettingsView({ userId, onClose }: SettingsViewProps) {
                subLoading ? "결제 처리 중..." :
                "광고 없이 수사 시작"}
             </button>
-            
           </div>
         )}
+        */}
 
         {/* 약관 및 정책 */}
         <div style={s.sectionLabel}>약관 및 정책</div>
