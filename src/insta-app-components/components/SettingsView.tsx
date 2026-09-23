@@ -1,6 +1,6 @@
 // src/components/SettingsView.tsx
 import { useState, useEffect } from "react";
-import { IAP } from "@apps-in-toss/web-framework";
+import { IAP, graniteEvent } from "@apps-in-toss/web-framework";
 import TermsView   from "./TermsView";
 import PrivacyView from "./PrivacyView";
 import AdInfoView  from "./AdInfoView";
@@ -27,6 +27,19 @@ export default function SettingsView({ userId, onClose }: SettingsViewProps) {
   const [isPremium,  setIsPremium]  = useState(false);
   const [checking,   setChecking]   = useState(true);
   const [subLoading, setSubLoading] = useState(false);
+
+  // ✅ 토스 내비게이션 바 뒤로가기
+  useEffect(() => {
+    const unsubscribe = graniteEvent.addEventListener('backEvent', {
+      onEvent: () => {
+        onClose();
+      },
+      onError: (error) => {
+        console.error('[설정] 뒤로가기 이벤트 오류:', error);
+      },
+    });
+    return unsubscribe;
+  }, [onClose]);
 
   // ── 구독 상태 조회 ────────────────────────────────────────
   useEffect(() => {
@@ -126,7 +139,7 @@ export default function SettingsView({ userId, onClose }: SettingsViewProps) {
 
       {/* ── 헤더 ── */}
       <div style={s.header}>
-        <button style={s.backBtn} onClick={onClose}>←</button>
+        {/* ✅ 뒤로가기 버튼 제거 - 토스 내비게이션 바 사용 */}
         <div style={s.headerCenter}>
           <span style={s.headerTitle}>인스타 언팔 수사대</span>
           <span style={s.headerSub}>SETTINGS</span>
@@ -304,3 +317,4 @@ const s: Record<string, React.CSSProperties> = {
   listText:    { fontSize: 14, color: "#111827" },
   listChevron: { fontSize: 18, color: "#d1d5db" },
 };
+
