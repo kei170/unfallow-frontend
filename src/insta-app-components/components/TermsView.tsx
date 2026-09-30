@@ -32,17 +32,12 @@ export default function TermsView({ onClose }: TermsViewProps) {
         "서비스는 이용자 기기 내에서만 데이터를 처리하므로, 이용자가 업로드한 파일의 정확성·완전성에 대한 책임은 이용자에게 있습니다. 회사는 분석 결과의 정확성을 보증하지 않으며, 이로 인한 손해에 대해 책임을 지지 않습니다.",
     },
     {
-      title: "제6조 (구독 서비스)",
-      content:
-        "유료 구독 서비스는 월 1,100원으로 자동 갱신됩니다. 구독 해지는 앱스토어 구독 관리에서 다음 갱신일 24시간 전까지 할 수 있으며, 이미 결제된 금액은 환불되지 않습니다.",
-    },
-    {
-      title: "제7조 (약관의 변경)",
+      title: "제6조 (약관의 변경)",
       content:
         "회사는 필요한 경우 약관을 변경할 수 있으며, 변경 시 서비스 내 공지를 통해 이용자에게 알립니다. 변경된 약관은 공지 후 7일이 경과한 날부터 효력이 발생합니다.",
     },
     {
-      title: "제8조 (준거법 및 관할)",
+      title: "제7조 (준거법 및 관할)",
       content:
         "이 약관과 관련된 분쟁은 대한민국 법률을 준거법으로 하며, 분쟁 발생 시 회사 소재지를 관할하는 법원을 합의 관할법원으로 합니다.",
     },
@@ -52,7 +47,7 @@ export default function TermsView({ onClose }: TermsViewProps) {
     <div style={s.overlay}>
       {/* 헤더 */}
       <div style={s.header}>
-        <button style={s.backBtn} onClick={onClose}>←</button>
+        {/* ✅ 뒤로가기 버튼 제거 - 토스 내비게이션 바 사용 */}
         <div style={s.headerCenter}>
           <span style={s.headerTitle}>서비스 이용약관</span>
         </div>
@@ -146,3 +141,4 @@ const s: Record<string, React.CSSProperties> = {
     fontSize: 14, color: "#fff",
   },
 };
+

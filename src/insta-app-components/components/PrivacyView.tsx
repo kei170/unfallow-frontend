@@ -52,7 +52,7 @@ export default function PrivacyView({ onClose }: PrivacyViewProps) {
     <div style={s.overlay}>
       {/* 헤더 */}
       <div style={s.header}>
-        <button style={s.backBtn} onClick={onClose}>←</button>
+        {/* ✅ 뒤로가기 버튼 제거 - 토스 내비게이션 바 사용 */}
         <div style={s.headerCenter}>
           <span style={s.headerTitle}>개인정보처리방침</span>
         </div>

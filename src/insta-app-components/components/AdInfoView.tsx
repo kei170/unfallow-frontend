@@ -17,26 +17,16 @@ export default function AdInfoView({ onClose }: AdInfoViewProps) {
         "광고 수익은 서비스의 지속적인 운영과 개선을 위해 사용됩니다. 광고를 통해 기본 기능을 무료로 제공할 수 있습니다.",
     },
     {
-      title: "광고 없이 사용하는 방법",
-      content:
-        "월 1,100원의 PRO 구독을 이용하시면 광고 없이 서비스를 이용할 수 있습니다. 구독은 설정 메뉴에서 가입할 수 있으며, 언제든지 해지 가능합니다.",
-    },
-    {
       title: "광고 개인정보 처리",
       content:
         "토스 광고 SDK는 토스의 개인정보처리방침에 따라 운영됩니다. 언팔 수사대는 광고 식별자 및 광고 관련 데이터를 직접 수집하거나 처리하지 않습니다.",
-    },
-    {
-      title: "광고 관련 문의",
-      content:
-        "광고 내용 또는 광고 운영 방식에 대한 문의는 아래 이메일로 접수해 주세요.\n\njihunj624@gmail.com",
     },
   ];
 
   return (
     <div style={s.overlay}>
       <div style={s.header}>
-        <button style={s.backBtn} onClick={onClose}>←</button>
+        {/* ✅ 뒤로가기 버튼 제거 - 토스 내비게이션 바 사용 */}
         <div style={s.headerCenter}>
           <span style={s.headerTitle}>광고 안내</span>
         </div>
@@ -46,7 +36,7 @@ export default function AdInfoView({ onClose }: AdInfoViewProps) {
       <div style={s.effectiveDate}>시행일: 2026년 8월 14일</div>
 
       {/* 요약 배지 */}
-      <div style={s.summaryBox}>
+      {/* <div style={s.summaryBox}>
         <div style={s.summaryIcon}>📢</div>
         <div>
           <div style={s.summaryTitle}>토스 광고 SDK 사용</div>
@@ -55,7 +45,7 @@ export default function AdInfoView({ onClose }: AdInfoViewProps) {
             광고 데이터는 직접 수집하지 않아요.
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div style={s.body}>
         {sections.map((sec, i) => (
@@ -69,10 +59,10 @@ export default function AdInfoView({ onClose }: AdInfoViewProps) {
           </div>
         ))}
 
-        <div style={s.contactBox}>
-          <div style={s.contactTitle}>광고 문의</div>
+        {/* <div style={s.contactBox}>
+          <div style={s.contactTitle}>앱 문의</div>
           <div style={s.contactText}>jihunj624@gmail.com</div>
-        </div>
+        </div> */}
 
         <div style={{ height: 32 }} />
       </div>
