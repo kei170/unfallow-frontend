@@ -9,12 +9,13 @@
     "deploy": "ait deploy"
   },
   "dependencies": {
+    "@apps-in-toss/cli": "^3.6.0",
     "jszip": "^3.10.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@apps-in-toss/web-framework": "^2.10.8",
+    "@apps-in-toss/web-framework": "^3.6.0",
     "@eslint/js": "^9.21.0",
     "@types/jszip": "^3.4.0",
     "@types/react": "^19.0.10",
